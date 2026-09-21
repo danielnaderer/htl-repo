@@ -1,0 +1,3 @@
+[submodule "aia/console-gpt"]
+	path = aia/console-gpt
+	url = https://github.com/danielnaderer/aia_ai_chat.git

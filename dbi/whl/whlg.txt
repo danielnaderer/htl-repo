@@ -1,0 +1,127 @@
+SQL-ÜBUNGEN: JOIN, EXISTS, NOT EXISTS UND CTE
+
+Gegeben sind folgende Tabellen:
+
+SCHUELER(
+    SchuelerID,
+    Name,
+    KlassenID
+)
+
+KLASSE(
+    KlassenID,
+    Bezeichnung
+)
+
+LEHRER(
+    LehrerID,
+    Name
+)
+
+UNTERRICHT(
+    LehrerID,
+    KlassenID,
+    Fach
+)
+
+
+--------------------------------------------------
+AUFGABE 1 – INNER JOIN
+--------------------------------------------------
+
+Gib alle Schüler gemeinsam mit der Bezeichnung ihrer Klasse aus.
+
+
+--------------------------------------------------
+AUFGABE 2 – JOIN ÜBER DREI TABELLEN
+--------------------------------------------------
+
+Gib für jeden Unterricht den Namen des Lehrers,
+die Klasse und das Fach aus.
+
+
+--------------------------------------------------
+AUFGABE 3 – JOIN MIT WHERE
+--------------------------------------------------
+
+Gib die Namen aller Schüler der Klasse 4AHIF aus.
+
+
+--------------------------------------------------
+AUFGABE 4 – LEFT JOIN
+--------------------------------------------------
+
+Gib alle Lehrer und die Fächer aus, die sie
+unterrichten. Lehrer, die keinen Unterricht haben,
+sollen ebenfalls angezeigt werden.
+
+
+--------------------------------------------------
+AUFGABE 5 – EXISTS
+--------------------------------------------------
+
+Gib alle Lehrer aus, für die mindestens ein
+Unterrichtseintrag vorhanden ist.
+
+
+--------------------------------------------------
+AUFGABE 6 – EXISTS MIT BEDINGUNG
+--------------------------------------------------
+
+Gib alle Lehrer aus, die das Fach DBI unterrichten.
+
+
+--------------------------------------------------
+AUFGABE 7 – NOT EXISTS
+--------------------------------------------------
+
+Gib alle Lehrer aus, die keinen Unterricht haben.
+
+
+--------------------------------------------------
+AUFGABE 8 – EXISTS
+--------------------------------------------------
+
+Gib alle Klassen aus, in denen mindestens ein
+Schüler eingetragen ist.
+
+
+--------------------------------------------------
+AUFGABE 9 – JOIN UND EXISTS
+--------------------------------------------------
+
+Gib Name und Klasse aller Schüler aus, deren Klasse
+von mindestens einem Lehrer im Fach DBI unterrichtet
+wird.
+
+
+--------------------------------------------------
+AUFGABE 10 – NOT EXISTS
+--------------------------------------------------
+
+Gib alle Klassen aus, die von keinem Lehrer im
+Fach DBI unterrichtet werden.
+
+
+--------------------------------------------------
+AUFGABE 11 – CTE (Common Table Expression)
+--------------------------------------------------
+
+Gib alle Klassen aus, die mehr als 20 Schüler haben.
+Zeige die Klassenbezeichnung und die Anzahl der Schüler an.
+Verwende dazu eine CTE.
+
+
+--------------------------------------------------
+AUFGABE 12 – CTE + JOIN + EXISTS + NOT EXISTS
+--------------------------------------------------
+
+Gib alle Lehrer aus, die folgende Bedingungen erfüllen:
+
+- Sie unterrichten mindestens zwei verschiedene Klassen.
+- Sie unterrichten mindestens einmal das Fach DBI.
+- Jede Klasse, die sie unterrichten, enthält mindestens
+  einen Schüler.
+
+Gib den Namen des Lehrers und die Anzahl der von ihm
+unterrichteten Klassen aus.
