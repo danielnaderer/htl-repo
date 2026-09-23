@@ -1,3 +1,6 @@
 [submodule "aia/console-gpt"]
 	path = aia/console-gpt
 	url = https://github.com/danielnaderer/aia_ai_chat.git
+[submodule "dasi (aids)/python-collatz-vermutung"]
+	path = dasi (aids)/python-collatz-vermutung
+	url = https://gitlab.com/htlstp/if/2026-4CHIF/DSAI/Daniel_Naderer/python-collatz-vermutung
