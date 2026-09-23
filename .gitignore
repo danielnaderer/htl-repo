@@ -1,2 +1,8 @@
 .DS_Store
 .idea/
+
+# Xcode stores machine- and user-specific state here.
+**/xcuserdata/
+
+# Jupyter keeps autosave copies here.
+**/.ipynb_checkpoints/

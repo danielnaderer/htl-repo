@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DSAI – Data Science and AI – Handouts</title>
+<style>
+  :root {
+    --bg: #f4f5f7;
+    --card: #ffffff;
+    --ink: #1c2024;
+    --ink-soft: #5b6470;
+    --line: #dfe3e8;
+    --accent: #0b6bcb;
+    --accent-soft: #e8f1fb;
+    --shadow: 0 1px 2px rgba(20,28,40,.06), 0 6px 20px rgba(20,28,40,.06);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #14181d;
+      --card: #1c2229;
+      --ink: #e8ecf1;
+      --ink-soft: #9aa5b1;
+      --line: #2c343d;
+      --accent: #5aa9f0;
+      --accent-soft: #1a2b3d;
+      --shadow: 0 1px 2px rgba(0,0,0,.3), 0 6px 20px rgba(0,0,0,.25);
+    }
+  }
+
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial, sans-serif;
+  }
+  .wrap { max-width: 940px; margin: 0 auto; padding: 32px 20px 64px; }
+
+  /* ---------- Kopf ---------- */
+  header {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 24px; flex-wrap: wrap;
+    padding-bottom: 22px; border-bottom: 3px solid var(--accent);
+  }
+  .logo-htl { height: 58px; width: auto; }
+  .titel { flex: 1 1 260px; }
+  h1 {
+    margin: 0 0 4px; font-size: 27px; line-height: 1.2;
+    letter-spacing: -.4px; font-weight: 700;
+  }
+  .titel p { margin: 0; color: var(--ink-soft); font-size: 14.5px; }
+  .titel .kurs { font-weight: 600; color: var(--ink); }
+
+  /* ---------- Einleitung ---------- */
+  .intro {
+    margin: 26px 0 30px; padding: 16px 18px;
+    background: var(--accent-soft); border-left: 4px solid var(--accent);
+    border-radius: 0 8px 8px 0; font-size: 15px;
+  }
+
+  h2 {
+    font-size: 13px; text-transform: uppercase; letter-spacing: .09em;
+    color: var(--ink-soft); font-weight: 700;
+    margin: 0 0 14px;
+  }
+
+  /* ---------- Karten ---------- */
+  .liste { display: grid; gap: 12px; }
+  .karte {
+    position: relative;
+    display: grid; grid-template-columns: 54px 1fr; gap: 18px;
+    align-items: center;
+    padding: 16px 22px;
+    background: var(--card); border: 1px solid var(--line);
+    border-radius: 12px; box-shadow: var(--shadow);
+    transition: border-color .15s, transform .15s, box-shadow .15s;
+  }
+  .karte:hover, .karte:focus-within {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+  }
+  .nr {
+    font-size: 21px; font-weight: 700; color: var(--accent);
+    background: var(--accent-soft);
+    border-radius: 9px; text-align: center;
+    padding: 9px 0; font-variant-numeric: tabular-nums;
+  }
+  .karte h3 { margin: 0; font-size: 18.5px; font-weight: 650; letter-spacing: -.2px; }
+  .karte h3 a { color: inherit; text-decoration: none; }
+  /* die ganze Karte ist klickbar, nicht nur der Titel */
+  .karte h3 a::after { content: ""; position: absolute; inset: 0; border-radius: 12px; }
+
+  /* ---------- Fuss ---------- */
+  footer {
+    margin-top: 38px; padding-top: 18px; border-top: 1px solid var(--line);
+    font-size: 13.5px; color: var(--ink-soft);
+    display: flex; justify-content: space-between; gap: 14px; flex-wrap: wrap;
+  }
+
+  @media (max-width: 560px) {
+    h1 { font-size: 23px; }
+    .karte { grid-template-columns: 44px 1fr; gap: 14px; padding: 14px 16px; }
+    .nr { font-size: 18px; }
+  }
+  @media print {
+    body { background: #fff; }
+    .karte { box-shadow: none; break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <img class="logo-htl" src="resources/HTLstp-RGB150.png" alt="HTL St. Pölten">
+    <div class="titel">
+      <h1>Data Science and AI</h1>
+      <p><span class="kurs">DSAI – Data Science and Artificial Intelligence – 4XHIF</span><br>REFR – Prof. Franz Reichel</p>
+    </div>
+  </header>
+
+  <p class="intro">
+    <strong>Alle Handouts auf einen Blick.</strong> Ein Klick auf den Titel öffnet die Seite.
+    Zum Ausdrucken lässt sich jede Seite im Browser als PDF speichern.
+  </p>
+
+  <h2>Handouts</h2>
+
+  <div class="liste">
+<!--KARTEN-->
+  </div>
+
+  <footer>
+    <span>HTL St. Pölten&nbsp;· Schuljahr 2026/27</span>
+    <span>Fragen? Einfach in der Stunde melden.</span>
+  </footer>
+
+</div>
+</body>
+</html>

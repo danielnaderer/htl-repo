@@ -1,0 +1,66 @@
+digraph DSAI {
+    rankdir=TB;
+    bgcolor="white";
+    splines=spline;
+    nodesep=0.45;
+    ranksep=0.55;
+    node [fontname="DejaVu Sans", fontsize=13, shape=box, style="rounded,filled",
+          penwidth=1.2, height=0.5, margin="0.18,0.10"];
+    edge [fontname="DejaVu Sans", fontsize=10, color="#7a8590", penwidth=1.1,
+          arrowsize=0.7, fontcolor="#5a636c"];
+
+    subgraph cluster_0 {
+        label="  Rohdaten  ";
+        fontname="DejaVu Sans"; fontsize=11; fontcolor="#6b7480";
+        color="#d4d9de"; style="rounded"; margin=12;
+        roh [label="CSV · Excel\nBilder · JSON", fillcolor="#f1f3f5", color="#c3cad1", fontcolor="#3d4650"];
+    }
+
+    subgraph cluster_1 {
+        label="  einlesen  ";
+        fontname="DejaVu Sans"; fontsize=11; fontcolor="#6b7480";
+        color="#d4d9de"; style="rounded"; margin=12;
+        pandas [label="pandas\nTabellen", fillcolor="#dbeafe", color="#7ba7d7", fontcolor="#1e3a5f"];
+        pillow [label="Pillow\nBilder", fillcolor="#dbeafe", color="#7ba7d7", fontcolor="#1e3a5f"];
+    }
+
+    subgraph cluster_2 {
+        label="  rechnen  ";
+        fontname="DejaVu Sans"; fontsize=11; fontcolor="#6b7480";
+        color="#d4d9de"; style="rounded"; margin=12;
+        numpy [label="NumPy\nArrays, Mathematik", fillcolor="#e5e0f5", color="#a294cf", fontcolor="#332a55"];
+    }
+
+    subgraph cluster_3 {
+        label="  lernen  ";
+        fontname="DejaVu Sans"; fontsize=11; fontcolor="#6b7480";
+        color="#d4d9de"; style="rounded"; margin=12;
+        sklearn [label="scikit-learn\nklassisches ML", fillcolor="#d8f0e3", color="#6fb894", fontcolor="#14432c"];
+        tf      [label="TensorFlow\nneuronale Netze", fillcolor="#d8f0e3", color="#6fb894", fontcolor="#14432c"];
+    }
+
+    subgraph cluster_4 {
+        label="  ansehen und erklären  ";
+        fontname="DejaVu Sans"; fontsize=11; fontcolor="#6b7480";
+        color="#d4d9de"; style="rounded"; margin=12;
+        mpl  [label="Matplotlib\njedes Diagramm", fillcolor="#fde8cd", color="#dda65e", fontcolor="#5c3a10"];
+        sns  [label="Seaborn\nStatistik-Diagramme", fillcolor="#fde8cd", color="#dda65e", fontcolor="#5c3a10"];
+        gv   [label="Graphviz\nBäume, Graphen", fillcolor="#fde8cd", color="#dda65e", fontcolor="#5c3a10"];
+    }
+
+    roh -> pandas;
+    roh -> pillow;
+
+    pandas -> numpy [label="  .values"];
+    pillow -> numpy [label="  np.array()"];
+
+    numpy -> sklearn;
+    numpy -> tf;
+
+    pandas -> mpl  [style=dashed];
+    pandas -> sns  [style=dashed];
+    sklearn -> gv  [style=dashed, label="  Baum zeichnen"];
+    tf -> mpl      [style=dashed, label="  Lernkurve"];
+
+    sns -> mpl [label="  baut auf", constraint=false, color="#b9c0c7", style=dotted];
+}

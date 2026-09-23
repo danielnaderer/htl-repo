@@ -1,0 +1,19 @@
+pages:
+  image: archlinux:latest
+  before_script:
+    - pacman -Syu --noconfirm --needed
+      pandoc-cli
+      ttf-dejavu noto-fonts-emoji
+      python-weasyprint
+      texlive-xetex
+      texlive-latexextra
+      texlive-latexrecommended
+      texlive-plaingeneric
+      texlive-fontsrecommended
+  script:
+    - bash build/build_html.sh
+  artifacts:
+    paths:
+      - public
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
