@@ -6,6 +6,11 @@
 	objectVersion = 90;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		65328ACE30651A5B00D2D6B2 /* Algorithms in Frameworks */ = {isa = PBXBuildFile; productRef = 65328ACD30651A5B00D2D6B2 /* Algorithms */; };
+		65328AD230651CDB00D2D6B2 /* Supabase in Frameworks */ = {isa = PBXBuildFile; productRef = 65328AD130651CDB00D2D6B2 /* Supabase */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		000000000000000000000120 /* election_swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = election_swift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -22,6 +27,8 @@
 		000000000000000130000000 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			files = (
+				65328AD230651CDB00D2D6B2 /* Supabase in Frameworks */,
+				65328ACE30651A5B00D2D6B2 /* Algorithms in Frameworks */,
 			);
 		};
 /* End PBXFrameworksBuildPhase section */
@@ -31,6 +38,7 @@
 			isa = PBXGroup;
 			children = (
 				000000000000000000000010 /* election_swift */,
+				65328AD030651CDB00D2D6B2 /* Frameworks */,
 				000000000000000000000020 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -41,6 +49,13 @@
 				000000000000000000000120 /* election_swift.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		65328AD030651CDB00D2D6B2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -60,6 +75,10 @@
 				000000000000000000000010 /* election_swift */,
 			);
 			name = election_swift;
+			packageProductDependencies = (
+				65328ACD30651A5B00D2D6B2 /* Algorithms */,
+				65328AD130651CDB00D2D6B2 /* Supabase */,
+			);
 			productName = MyApp;
 			productReference = 000000000000000000000120 /* election_swift.app */;
 			productType = "com.apple.product-type.application";
@@ -88,6 +107,10 @@
 			);
 			mainGroup = 000000000000000000000001;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				65328ACC30651A5B00D2D6B2 /* XCRemoteSwiftPackageReference "swift-algorithms" */,
+				65328ACF30651AE200D2D6B2 /* XCRemoteSwiftPackageReference "supabase-swift" */,
+			);
 			preferredProjectObjectVersion = 90;
 			productRefGroup = 000000000000000000000020 /* Products */;
 			projectDirPath = "";
@@ -341,6 +364,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		65328ACC30651A5B00D2D6B2 /* XCRemoteSwiftPackageReference "swift-algorithms" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-algorithms.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.1;
+			};
+		};
+		65328ACF30651AE200D2D6B2 /* XCRemoteSwiftPackageReference "supabase-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/supabase/supabase-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.5.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		65328ACD30651A5B00D2D6B2 /* Algorithms */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 65328ACC30651A5B00D2D6B2 /* XCRemoteSwiftPackageReference "swift-algorithms" */;
+			productName = Algorithms;
+		};
+		65328AD130651CDB00D2D6B2 /* Supabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 65328ACF30651AE200D2D6B2 /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Supabase;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 000000000000000000000000 /* Project object */;
 }

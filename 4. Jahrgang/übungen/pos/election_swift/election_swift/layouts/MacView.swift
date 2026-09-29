@@ -2,71 +2,91 @@
 //  MacView.swift
 //  election_swift
 //
-//  Created by Daniel Naderer on 22.09.26.
-//
 
 import SwiftUI
 
 struct MacView: View {
-    @State private var kandidateList: [Candidate] = [
-        Candidate(name: "Kandidat 1", active: false),
-        Candidate(name: "Kandidat 2", active: false),
-        Candidate(name: "Kandidat 3", active: false)
-    ]
-    @State private var k1c = false  // temp
+    private let voteService: VoteService
+    @State private var candidateList: [Candidate]
+    
+    func loadCandidates() {
+        self.candidateList = voteService.getCandidates()
+    }
+    
+    init() {
+        let voteService = VoteService()
+        self.voteService = voteService
+        self._candidateList = State(initialValue: voteService.getCandidates())
+    }
     
     @FocusState private var focusedField: UUID?
     @State private var selectedCandidate: UUID?
-    
+
     var body: some View {
         ZStack {
-            Color.clear
-                .contentShape(Rectangle())
-                .onTapGesture {
-                    focusedField = nil
-                }
             VStack {
                 Text("Election")
                     .font(.largeTitle)
                     .bold()
-                
+
                 Spacer()
-                
+
                 VStack(spacing: -15) {
-                    ForEach($kandidateList) { $candidate in
+                    ForEach($candidateList) { $candidate in
                         HStack {
                             ZStack(alignment: .trailing) {
-                                TextField("Name eingeben", text: $candidate.name)
-                                    .textFieldStyle(.roundedBorder)
-                                    .frame(width: 200)
-                                    .focused($focusedField, equals: candidate.id)
-                                    .onTapGesture {
+                                TextField(
+                                    "Name eingeben",
+                                    text: $candidate.name
+                                )
+                                .textFieldStyle(.roundedBorder)
+                                .frame(width: 200)
+                                .focused($focusedField, equals: candidate.id)
+                                .simultaneousGesture(
+                                    TapGesture().onEnded {
                                         selectedCandidate = candidate.id
                                     }
-                                
+                                )
+
                                 Image(systemName: "square.and.pencil")
                                     .foregroundStyle(.secondary)
                                     .padding(.trailing, 8)
                                     .allowsHitTesting(false)
                             }
-                            
-                            Toggle("", isOn: $candidate.active)
-                                .labelsHidden()
-                            
-                            Toggle("", isOn: $k1c)
-                                .labelsHidden()
+
+                            Button {
+                                // TODO: was wenn stimme für Schulsprecher
+                            } label: {
+                                Text("1st")
+                            }
+
+                            Button {
+                                // TODO: was wenn Stimme für Vertretung
+                            } label: {
+                                Text("2nd")
+                            }
                         }
                         .padding()
                     }
                 }
-                
-                Spacer()
-                
+
                 if let selectedCandidate {
                     Button {
+                        let candidateID = selectedCandidate
                         focusedField = nil
-                        kandidateList.removeAll { $0.id == selectedCandidate }
                         self.selectedCandidate = nil
+
+                        // --------------------------------------
+                        // Code in dieser Box ist AI weil kp wie ich Index out of range error fixe
+                        
+                        Task { @MainActor in
+                            // Let AppKit finish ending the text field edit before
+                            // removing its index-backed SwiftUI binding.
+                            await Task.yield()
+                            let removeCandidateSuccess = voteService.removeCandidate(id: candidateID)
+                            self.loadCandidates()
+                        }
+                        // --------------------------------------
                     } label: {
                         Image(systemName: "minus")
                             .font(.title2)
@@ -74,21 +94,24 @@ struct MacView: View {
                     }
                 } else {
                     Button {
-                        kandidateList.append(
-                            Candidate(name: "Kandidat", active: false)
-                        )
+                        let addCandidateSuccess = voteService.addCandidate(candidate: Candidate(name: "Kandidat", votes: 0))
+                        self.loadCandidates()
+                        
                     } label: {
                         Image(systemName: "plus")
                             .font(.title2)
                             .frame(width: 20, height: 20)
                     }
                 }
-                
+
+                Spacer()
             }
             .frame(width: 500, height: 300)
             .padding()
         }
     }
+    
+
 }
 
 #Preview {
